@@ -1,0 +1,28 @@
+Aula 5----------------------------------------------------------------------
+
+Para escrever usamos print(). print() aceita vários parâmetros, incluindo
+um separador e um end para colocar entre parâmetros:
+
+print("O brasil", "possui", "5", "titulos mundiais", sep="-")
+retorna: O brasil-possui-5-titulos mundiais
+
+print("O brasil", "possui", "5", "titulos mundiais", end="OPA")
+retorna: O brasil possui 5 titulos mundiaisOPA
+
+O espaçador padrão é espaço e o end padrão é \n
+
+Declaração de variáveis é sempre um nome e um valor, nunca só nome.
+pais = "Italia"
+quantidade = 4
+
+print(pais, "ganhou", quantidade "titulos")
+italia ganhou 4 titulos
+
+type(item) retorna o tipo da variável item passado. Python assume os
+tipos de variáveis de acordo com as atribuições, inclusive para 
+troca de tipos. Tipagem dinâmica vs tipagem estática.
+
+python usa Snake_Case, ou seja:
+notas_de_aula
+e não
+notasDeAula (CamelCase)
