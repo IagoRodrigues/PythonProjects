@@ -1,4 +1,4 @@
-Aula 5----------------------------------------------------------------------
+﻿Aula 5----------------------------------------------------------------------
 
 Para escrever usamos print(). print() aceita vários parâmetros, incluindo
 um separador e um end para colocar entre parâmetros:
@@ -26,3 +26,126 @@ python usa Snake_Case, ou seja:
 notas_de_aula
 e não
 notasDeAula (CamelCase)
+
+For em python---------------------------------------------------------------
+
+A sintaxe básica é:
+
+for variavel in range(1,10):
+	print(variavel)
+Vai retornar os numeros de 1 a 9
+
+for variavel in range(1,10, 2):
+	print(variavel)
+Vai retornar 1, 3, 5, 7, 9 ou seja, somar 2 a cada entrada.
+
+A função range retorna o range de numeros que serão usados, é possível 
+fazer:
+
+for variavel in [1,2,3,4,5]:
+	print(variavel)
+Vai retornar os numeros de 1 a 5
+
+Como o ultimo numero é exclusivo, é uma boa ideia usar:
+
+for variavel in range(1,10+1):
+	print(variavel)
+Vai retornar os numeros de 1 a 10
+
+Mais String-----------------------------------------------------------------
+Inicialmente podemos escrever uma string com colchetes e chamar a função
+format nessa string, passando para ela os valores que desejamos colocar
+no lugar destes colchetes:
+ 
+print("Tentativa {} de {}".format(3,10)
+saída: Tentativa 3 de 10
+
+Para trocar as ordens dos parametros é possível colocar o index
+dos parâmetros dentro dos colchetes, lembrando que o primeiro
+index é 0:
+
+print("Tentativa {0} de {1}".format(3,10)
+saída: Tentativa 10 de 3
+
+Para avisar que dentro dos colchetes vem um float:
+
+print("R$ {:f}".format(1.5)
+saída: R$ 1.500000
+
+Para formatar esse float com sempre duas casas após a virgula:
+
+print("R$ {:.2f}".format(1.5)
+saída: R$ 1.50
+
+Para formatar esse float ce forma que os valores saiam encaixados:
+Primeiro conto quantos caracteres tem o número ao total, depois
+coloco esse valor após os dois pontos:
+
+print("R$ {:7.2f}".format(1.5)
+print("R$ {:7.2f}".format(1234.5)
+print("R$ {:7.2f}".format(4.5)
+saída: 
+       R$    1.50
+	   R$ 1234.50
+       R$    4.50
+	   
+Queremos alinhar os pontos e preencher com 0:
+
+print("R$ {:07.2f}".format(1.5)
+print("R$ {:07.2f}".format(1234.5)
+print("R$ {:07.2f}".format(4.5)
+saída: 
+       R$ 0001.50
+	   R$ 1234.50
+       R$ 0004.50
+	   
+{:07.2f} quer dizer: substitua por um float, de duas casas após a virgu
+la, aí o ponto, aí 7 casas ao todo, preenchidos com 0
+
+Para inteiro não fiz sentido usar nada após a virgula (já que é inteiro)
+mas fazemos:
+
+print("R$ {:07d}".format(5)
+saída: R$ 0000005
+
+print("R$ {:07d}".format(56)
+saída: R$ 0000056
+
+Sem zeros:
+
+print("R$ {:7d}".format(56)
+saída: R$      56
+
+Para datas:
+print("Data: {:2d}/{:2d}".format(9,4)
+saída: Data: 9/ 4
+
+Melhorando:
+print("Hoje: {:02d}/{:02d}".format(9,4)
+saída: Data: 09/04
+
+print("Hoje: {:02d}/{:02d}".format(19,11)
+saída: Data: 19/11
+
+Para lembrar, na documentação:
+https://docs.python.org/3/library/string.html#formatexamples
+
+A partir da versão 3.6 do Python, foi adicionado um novo recurso para
+realizar a interpolação de strings. Esse recurso é chamado de f-strings
+ou formatted string literals.
+
+Esse recurso funciona da seguinte forma. Vamos imaginar que temos uma 
+variável nome:
+
+>>> nome = 'Matheus'
+>>> print(f'Meu nome é {nome}')
+Meu nome é Matheus
+Quando colocamos a letra f antes das aspas, informamos ao Python que esta
+mos utilizando uma f-string. Dessa forma o Python consegue, em tempo de 
+execução, captar a expressão que está entre chaves ({ }) e avaliá-la.
+
+Além de variáveis, podemos passar também de funções e métodos:
+
+>>> nome = 'Matheus'
+>>> print(f'Meu nome é {nome.lower()}')
+Meu nome é matheus
