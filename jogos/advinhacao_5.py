@@ -19,8 +19,22 @@ passando um parâmetro ela gera números de 0 até parametro-1
 passando dois paratros ela gera numeros de parametro1 até
 paramentro2-1, ficando:
 '''
-numero_secreto = random.randrange(1, 101) #de 1 a 100
-total_de_tentativas = 3
+
+nro_secreto = random.randrange(1, 101) #de 1 a 100
+total_de_tentativas = 0
+pontos = 1000
+
+print("Qual dificuldade você deseja?")
+print("(1) Fácil (2) Médio (3) Difícil")
+
+nivel = int(input("Defina o nível: "))
+
+if(nivel == 1):
+    total_de_tentativas = 20
+elif(nivel == 2):
+    total_de_tentativas = 10
+else:
+    total_de_tentativas = 5
 
 for rodada in range(1, total_de_tentativas+1):
     #print("Rodada", rodada, "de", total_de_tentativas)
@@ -42,12 +56,13 @@ for rodada in range(1, total_de_tentativas+1):
     menor = nro_secreto > chute
 
     if(acertou):
-        print("Você acertou!!")
+        print("Você acertou e fez {} pontos!!!".format(pontos))
         break
     else:
         if(maior):
             print("Chutou alto!!")
         elif(menor):
             print("Chutou Baixo!!")
-
+        pontos_perdidos = abs(nro_secreto - chute)
+        pontos = pontos - pontos_perdidos
 print("Fim de jogo!")

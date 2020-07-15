@@ -149,3 +149,90 @@ Além de variáveis, podemos passar também de funções e métodos:
 >>> nome = 'Matheus'
 >>> print(f'Meu nome é {nome.lower()}')
 Meu nome é matheus
+
+Seed------------------------------------------------------------------------
+A função random sempre usa seed para gerar o número. Dado um seed o
+numero gerado sempre é o mesmo:
+ 
+>>> random.seed(100)
+>>> random.randrange(1, 101)
+19
+
+Arredondamento--------------------------------------------------------------
+
+A função round arredonda para o numero par mais próximo, sendo assim:
+3.5 arredonda para 4
+4.5 arredonda para 4
+
+Divisão---------------------------------------------------------------------
+
+O operador / SEMPRE devolve um float:
+
+>>>  3 / 2
+1.5
+
+>>>  2 / 2
+1.0
+
+>>>  5 / 2
+2.5
+
+Já o operador // sempre retorna um int sem arredondar, ou seja, 
+retorna a parte inteira da divisão:
+
+>>>  3 // 2
+1
+
+>>>  5 // 2
+2
+
+Importar--------------------------------------------------------------------
+
+Quando importamos um módulo a primeira coisa que Python faz é executar 
+tudo o que estiver no modulo.
+
+Quando executamos um arquivo diretamente (chama o arquivo no shell,
+por exemplo) a variável __name__ recebe o valor "__main__", pq 
+python diz que ela é o programa principal.
+
+Quando um outro programa chama o arquivo, a variável __name__ recebe
+outro valor, logo, quando quisermos que determinada função seja 
+chamada tanto como funcao para um programa quanto como um programa
+a parte, precisamos adicionar o seguinte ao fim do arquivo:
+
+if (__name__ == "__main__"):
+    nome_da_funcao()
+
+Pronto! Agora se chamar no shell, __name__ será igual a 
+__main__ e esse if chamará a função.
+
+Se chamar como função a partir de outro programa a função será 
+executada uma vez e __name__ receberá outro valor, garantindo
+que a função não será executada 2x
+
+Funções---------------------------------------------------------------------
+
+Podemos definir funções com a palavra reservada def. a sintaxe é:
+
+def jogar():
+	e tudo depois do tab pertence a essa função
+	
+Exemplo:
+def soma(a, b):
+	return a + b
+	
+Se um arquivo é composto só de função ele não pode ser executado
+"sozinho" mas sim deve ser chamado por algum outro arquivo
+
+Para chamar:
+
+Se a função esta no mesmo arquivo:
+nome_da_funcao()
+s = soma(3, 4) 
+
+Se a função esta em outro arquivo:
+import outro
+
+outro.nome_da_funcao()
+s = outro.soma(3, 4)
+
