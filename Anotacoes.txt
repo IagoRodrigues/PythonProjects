@@ -236,3 +236,30 @@ import outro
 outro.nome_da_funcao()
 s = outro.soma(3, 4)
 
+Strings---------------------------------------------------------------------
+
+Função find()------------------
+palavra = "banana"
+palavra.find("b")
+retorna: 0
+
+palavra.find("n")
+retorna: 2
+
+palavra.find("z")
+retorna: -1
+
+Se tiver a letra na palavra, retorna a primeira posição encontrada.
+
+Função captalize()-------------
+print(palavra.captalize())
+retorna: "Banana"
+
+Essa função retorna uma string com a primeira letra maiuscula e as outras
+em minusculo
+
+Função strip()-----------------
+Essa função retira os espaços do início e do fim da string recebida e
+retorna a string resultante.
+
+
