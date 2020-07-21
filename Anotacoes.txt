@@ -262,4 +262,96 @@ Função strip()-----------------
 Essa função retira os espaços do início e do fim da string recebida e
 retorna a string resultante.
 
+Lists-----------------------------------------------------------------------
 
+Python tem 3 tipos de listas: tuple, range e list:
+
+Exemplos de list:
+a = [1, 2, 3]
+b = [2, 1, 3]
+
+Acesso pelo index:
+a[1]
+2
+
+list é ordenado (a é diferente de b mesmo contendo os mesmos valores)
+pode conter qualquer tipo de item, inclusive mais de um tipo, e lists
+podem ter o mesmo item mais de uma vez.
+
+Podemos acessar elementos pelo index, podemos fatiar listas assim como
+fatiamos strings:
+
+>>> a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+
+>>> a[2:5]
+['baz', 'qux', 'quux']
+
+é possivel concatenar e multiplicar listas:
+>>> a + ['grault', 'garply']
+['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply']
+
+>>> a * 2
+['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'foo', 'bar', 'baz',
+'qux', 'quux', 'corge']
+
+uma lista pode conter outra lista.
+
+---TUPLE, STR E RANGE SÃO LISTS IMUTÁVEIS
+ 
+O que muda entre list e tuple é que lists são dadas por [] e tuple são 
+dadas por ():
+
+>>> list = [4,3,2,1]
+>>> tuple = (4,3,2,1)
+
+Tenho a list "linhas_list" e quero tuple:
+linhas_tuple = tuple(linhas_list)
+
+Tenho a tuple "linhas_tuple" e quero list:
+linhas_list = list(linhas_tuple)
+
+---Existe ainda o elemento set:
+
+>>> set = {4, 3, 2, 1}
+
+o elemento set é como um list, mas não permite elementos repetidos nem
+é ordenado, ou seja, ao imprimir um set não sabemos em qual ordem
+os elementos serão repetidos.
+
+---o Dictionary armezena um par chave : valor
+
+instrutores = {'Nico' : 39, 'Flavio': 37, 'Marcos' : 30}
+
+agora é possível fazer:
+
+>>> instrutores['Flavio']
+imprime: 37
+
+List Comprehension----------------------------------------------------------
+
+python permite inicializar uma lista já fazendo o laço para preenche-la:
+se queremos preencher a lista com numeros de 1 a 5:
+
+lista = [for var in range(1,6)]
+
+Se temos a lista:
+frutas = ["maçã", "banana", "laranja", "melancia"]
+
+E queremos criar uma lista com as mesmas frutas em maiusculo fazemos:
+lista = [fruta.upper() for fruta in frutas]
+
+List Comprehension também permite utilizar condições para o 
+preenchimento da lista.
+
+temos uma lista de inteiros:
+inteiros = [1,3,4,5,7,8,9]
+
+queremos só os pares:
+Forma 1:
+pares = []
+for numero in inteiros:
+    if numero % 2 == 0:
+        pares.append(numero)
+		
+Forma 2 com list comprehension:
+pares = [x for x in inteiros if x % 2 == 0]
