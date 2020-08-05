@@ -400,3 +400,116 @@ tipo str
 
 >>>print("Inverso: {}".format(inverso))
 escreve: Inverso: 321
+
+Arquivos--------------------------------------------------------------------
+
+Puthon possui a função open para abrir arquivos, podemos fazer:
+
+>>>arquivo = open("palavras.txt", "w") para escrever (limpa e escreve do 0)
+
+ou
+
+>>>arquivo = open("palavras.txt", "r") para ler (lê)
+
+ou
+
+>>>arquivo = open("palavras.txt", "a") para append (adiciona sem apagar)
+
+ou ainda
+
+>>>arquivo = open("palavras.txt") para ler (padrão)
+
+Uma vez aberto podemos escrever dentro:
+
+Para escrever:
+>>>arquivo.write("banana")
+6
+>>>arquivo.write("melancia")
+8
+
+retorna a quantidade de caracteres escritos.
+
+depois de usar é bom fechar com:
+>>>arquivo.close()
+
+IMPORTANTE---
+>>>arquivo.write("banana")
+6
+>>>arquivo.write("melancia")
+8
+
+vai escrever: bananamelancia
+
+o correto é:
+>>>arquivo.write("banana\n")
+6
+>>>arquivo.write("melancia\n")
+8
+
+IMPORTANTE 2---
+Além de r, w, e a temos o modificador b, para abrir em binário:
+
+#arquivo copia.py
+#abriu python-logo.png para leitura binária
+#leu o arquivo
+#fechou:
+logo = open('python-logo.png', 'rb') 
+data = logo.read()
+logo.close()
+
+#criou o arquivo python-logo2.png para escrita binária
+#escreveu no arquivo
+#fechou:
+logo2 = open('python-logo2.png', 'wb') 
+logo2.write(data) 
+logo2.close()
+
+O código acima copiou o arquivo python-logo.png
+
+Para ler---
+
+>>>arquivo = open("palavras.txt", "r")
+>>>arquivo.read()
+
+da primeira vez vai retornar todo o conteúdo do arquivo concatenado,
+das proximas vezes não vai retornar nada, uma vez que o ponteiro dentro
+do arquivo está no final agora, para ler do começo, só abrindo de novo
+
+Podemos ler linha por linha em um for:
+>>>arquivo = open("palavras.txt", "r")
+>>>for linha in arquivo:
+	print(linha)
+	
+vai retornar:
+banana
+
+melancia
+
+morango
+
+maça
+
+porque?
+
+porque print inclui um \n automático, somado ao \n da quebra de linha
+dentro do arquivo ficaram 2, dando o efeito acima. Para printar 
+corretamente:
+
+>>>arquivo = open("palavras.txt", "r")
+>>>for linha in arquivo:
+	linha.strip()
+	print(linha)
+	
+o strip se encarrega de retirar espaços no começo e no final da string
+e esses \n que eventualmente vem junto
+
+para ler uma linha só:
+>>>arquivo = open("palavras.txt", "r")
+>>> linha = arquivo.readline()
+
+essa função retorna uma linha só
+
+with---
+>>>with open("palavras.txt") as arquivo:
+
+agora o python cuida de fechar o arquivo para mim
