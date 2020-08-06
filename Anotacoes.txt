@@ -1,4 +1,4 @@
-﻿Aula 5----------------------------------------------------------------------
+﻿Aula 5---------------------------------------------------------------------------------------------------------------------------
 
 Para escrever usamos print(). print() aceita vários parâmetros, incluindo
 um separador e um end para colocar entre parâmetros:
@@ -27,7 +27,7 @@ notas_de_aula
 e não
 notasDeAula (CamelCase)
 
-For em python---------------------------------------------------------------
+For em python--------------------------------------------------------------------------------------------------------------------
 
 A sintaxe básica é:
 
@@ -52,7 +52,7 @@ for variavel in range(1,10+1):
 	print(variavel)
 Vai retornar os numeros de 1 a 10
 
-Mais String-----------------------------------------------------------------
+Mais String----------------------------------------------------------------------------------------------------------------------
 Inicialmente podemos escrever uma string com colchetes e chamar a função
 format nessa string, passando para ela os valores que desejamos colocar
 no lugar destes colchetes:
@@ -150,7 +150,7 @@ Além de variáveis, podemos passar também de funções e métodos:
 >>> print(f'Meu nome é {nome.lower()}')
 Meu nome é matheus
 
-Seed------------------------------------------------------------------------
+Seed-----------------------------------------------------------------------------------------------------------------------------
 A função random sempre usa seed para gerar o número. Dado um seed o
 numero gerado sempre é o mesmo:
  
@@ -158,13 +158,13 @@ numero gerado sempre é o mesmo:
 >>> random.randrange(1, 101)
 19
 
-Arredondamento--------------------------------------------------------------
+Arredondamento-------------------------------------------------------------------------------------------------------------------
 
 A função round arredonda para o numero par mais próximo, sendo assim:
 3.5 arredonda para 4
 4.5 arredonda para 4
 
-Divisão---------------------------------------------------------------------
+Divisão--------------------------------------------------------------------------------------------------------------------------
 
 O operador / SEMPRE devolve um float:
 
@@ -193,7 +193,7 @@ O operador % retorna o resto da divisão:
 
 >>> 5 % 2
 1
-Importar--------------------------------------------------------------------
+Importar-------------------------------------------------------------------------------------------------------------------------
 
 Quando importamos um módulo a primeira coisa que Python faz é executar 
 tudo o que estiver no modulo.
@@ -217,7 +217,7 @@ Se chamar como função a partir de outro programa a função será
 executada uma vez e __name__ receberá outro valor, garantindo
 que a função não será executada 2x
 
-Funções---------------------------------------------------------------------
+Funções--------------------------------------------------------------------------------------------------------------------------
 
 Podemos definir funções com a palavra reservada def. a sintaxe é:
 
@@ -243,7 +243,7 @@ import outro
 outro.nome_da_funcao()
 s = outro.soma(3, 4)
 
-Strings---------------------------------------------------------------------
+Strings--------------------------------------------------------------------------------------------------------------------------
 
 Função find()------------------
 palavra = "banana"
@@ -269,7 +269,7 @@ Função strip()-----------------
 Essa função retira os espaços do início e do fim da string recebida e
 retorna a string resultante.
 
-Lists-----------------------------------------------------------------------
+Lists----------------------------------------------------------------------------------------------------------------------------
 
 Python tem 3 tipos de listas: tuple, range e list:
 
@@ -334,7 +334,7 @@ agora é possível fazer:
 >>> instrutores['Flavio']
 imprime: 37
 
-List Comprehension----------------------------------------------------------
+List Comprehension---------------------------------------------------------------------------------------------------------------
 
 python permite inicializar uma lista já fazendo o laço para preenche-la:
 se queremos preencher a lista com numeros de 1 a 5:
@@ -363,7 +363,7 @@ for numero in inteiros:
 Forma 2 com list comprehension:
 pares = [x for x in inteiros if x % 2 == 0]
 
-Invertendo texto ou lista---------------------------------------------------
+Invertendo texto ou lista--------------------------------------------------------------------------------------------------------
 
 A função reversed retorna um interator que pode ser usado para percorrer 
 uma lista de forma reversa, logo se fizermos:
@@ -401,7 +401,7 @@ tipo str
 >>>print("Inverso: {}".format(inverso))
 escreve: Inverso: 321
 
-Arquivos--------------------------------------------------------------------
+Arquivos-------------------------------------------------------------------------------------------------------------------------
 
 Puthon possui a função open para abrir arquivos, podemos fazer:
 
@@ -513,3 +513,58 @@ with---
 >>>with open("palavras.txt") as arquivo:
 
 agora o python cuida de fechar o arquivo para mim
+
+Parametros opicionais------------------------------------------------------------------------------------------------------------
+
+Podemos passar parametros padrões para nossas funcoes, por exemplo:
+
+def carrega_palavra_secreta(nome_arquivo="palavras.txt"):
+    arquivo = open(nome_arquivo, "r")
+	...
+	
+Quando chamarmos:
+
+>>>carrega_palavra_secreta()
+o padrão vai ser carregado, chamando palavras.txt
+
+Quando a chamada for:
+
+>>>carrega_palavra_secreta("frutas.txt")
+o arquivo carregado será frutas.txt
+
+Parametros Nomeados--------------------------------------------------------------------------------------------------------------
+
+Vamos supor que o arquivo passado possa ter cabecalho ou não, podemos fazer:
+
+>>>def carrega_palavra_secreta(primeira_linha_valida, nome_arquivo="palavras.txt")
+
+Agora podemos passar 0 quando não tiver cabecalho e 1 quando tiver, podemos até dizer que o padrão é
+começar da linha 0:
+
+>>>def carrega_palavra_secreta(nome_arquivo="palavras.txt", primeira_linha_valida=0)
+
+Eh valido chamar da seguinte forma:
+
+>>>carrega_palavra_secreta()
+chama com arquivo padrão e primeira linha padrão
+
+>>>carrega_palavra_secreta("frutas.txt")
+chama com arquivo passado e primeira linha padrão
+
+>>>carrega_palavra_secreta("frutas.txt", 2)
+chama com arquivo passado e primeira linha passada
+
+IMPORTANTE---
+Se usarmos:
+
+>>>carrega_palavra_secreta(5)
+O python vai achar que o nome do arquivo é 5 o que gera problemas, sendo assim devemos usar parametros nomeados:
+
+>>>carrega_palavra_secreta(primeira_linha_valida=5)
+chama com arquivo padrão e primeira linha passada
+
+>>>carrega_palavra_secreta(nome_arquivo="frutas.txt", primeira_linha_valida= 5)
+chama com arquivo passado e primeira linha passada
+
+Quando usamos parametros nomeados podemos inclusive trocar a ordem dos parametros:
+>>>carrega_palavra_secreta(primeira_linha_valida=5, nome_arquivo="frutas.txt")
