@@ -568,3 +568,44 @@ chama com arquivo passado e primeira linha passada
 
 Quando usamos parametros nomeados podemos inclusive trocar a ordem dos parametros:
 >>>carrega_palavra_secreta(primeira_linha_valida=5, nome_arquivo="frutas.txt")
+
+Dicionário-----------------------------------------------------------------------------------------------------------------------
+
+Dicionário é uma estrutura chave valor:
+
+>>>conta = {"nro": 123, "titular":"Iago", "saldo": 55.0, "limite": 1000.0}
+>>>conta["nro"]
+
+retorna 123
+
+Classe---------------------------------------------------------------------------------------------------------------------------
+
+Sintaxe:
+
+class Conta:
+
+    def __init__(self, numero, titular, saldo, limite): # init é a classe construtora, os outros são atributos, self é como o this
+        print("Construindo objeto...{}".format(self)) # imprime a referencia ao objeto na memoria
+        self.numero = numero
+        self.titular = titular
+        self.saldo = saldo
+        self.limite = limite
+		
+Podemos atribuir valores padrão na declaração da classe:
+
+class Conta:
+
+    def __init__(self, numero, titular, saldo, limite = 1000.0):
+        self.numero = numero
+        self.titular = titular
+        self.saldo = saldo
+        self.limite = limite
+		
+Se fizermos:
+
+>>>conta2 = Conta(2, "Beltrano", 0.0)
+O limite será 1000.0 
+
+>>>conta3 = Conta(3, "Sicrano", 0.0, 2000.0)
+O limite será 2000.0
+
