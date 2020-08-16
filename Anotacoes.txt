@@ -609,3 +609,39 @@ O limite será 1000.0
 >>>conta3 = Conta(3, "Sicrano", 0.0, 2000.0)
 O limite será 2000.0
 
+Exemplo metodo/atributo:
+
+Faço:
+
+class Cliente:
+
+    def __init__(self, nome):
+        self.nome = nome
+
+    def get_nome(self):
+        return self.nome.title() # O metodo title() garante a primeira letra maiuscula
+		
+até agora essa classe possui:
+
+1)atributo nome: retorna = iago
+2)metodo get_nome(): retorna = Iago
+
+e se eu quiser chamar esse metodo toda vez que uso esse atributo?
+
+posso fazer:
+
+class Cliente:
+
+    def __init__(self, nome):
+        self.__nome = nome
+
+	@property
+    def nome(self):
+		print("propriedade")
+        return self.__nome.title() # O metodo title() garante a primeira letra maiuscula
+		
+agora cliente.nome retorna:
+propriedade
+Iago
+
+Ou seja, por baixo dos panos o Python chama o método na hora de lidar com o atributo
