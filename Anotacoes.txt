@@ -584,7 +584,8 @@ Sintaxe:
 
 class Conta:
 
-    def __init__(self, numero, titular, saldo, limite): # init é a classe construtora, os outros são atributos, self é como o this
+    def __init__(self, numero, titular, saldo, limite): # init é a classe construtora, os outros são atributos, 
+    self é como o this
         print("Construindo objeto...{}".format(self)) # imprime a referencia ao objeto na memoria
         self.numero = numero
         self.titular = titular
@@ -645,3 +646,15 @@ propriedade
 Iago
 
 Ou seja, por baixo dos panos o Python chama o método na hora de lidar com o atributo
+
+Sintaxes Interessantes-----------------------------------------------------------------------------------------------------------
+
+Retorna verdadeiro se o tamanho de cpf == tamanho_cpf:
+return True if len(self.cpf) == __class__.tamanho_cpf else False
+
+posso declarar um atributo de classe simplesmente fazendo:
+    class Teste:
+        atributo = 10
+
+e usar fazendo:
+    __class__.atributo
