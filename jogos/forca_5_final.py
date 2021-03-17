@@ -12,11 +12,11 @@ def jogar():
     acertou = False
     erros = 0
 
-    while (not enforcado and not acertou):
+    while not enforcado and not acertou:
 
         chute = pergunta_letra()
 
-        if (chute in palavra_secreta):
+        if chute in palavra_secreta:
             merca_letra_correta(chute, letras_acertadas, palavra_secreta)
         else:
             erros += 1
@@ -27,7 +27,7 @@ def jogar():
         acertou = "_" not in letras_acertadas
         print(letras_acertadas)
 
-    if (acertou):
+    if acertou:
         imprime_msg_ganhador()
     else:
         imprime_msg_perdedor(palavra_secreta)
@@ -151,41 +151,42 @@ def merca_letra_correta(chute, letras_acertadas, palavra_secreta):
             letras_acertadas[index] = letra
         index += 1
 
+
 def desenha_forca(erros):
     print("  _______     ")
     print(" |/      |    ")
 
-    if(erros == 1):
+    if (erros == 1):
         print(" |      (_)   ")
         print(" |            ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 2):
+    if (erros == 2):
         print(" |      (_)   ")
         print(" |      \     ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 3):
+    if (erros == 3):
         print(" |      (_)   ")
         print(" |      \|    ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 4):
+    if (erros == 4):
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |            ")
         print(" |            ")
 
-    if(erros == 5):
+    if (erros == 5):
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
         print(" |            ")
 
-    if(erros == 6):
+    if (erros == 6):
         print(" |      (_)   ")
         print(" |      \|/   ")
         print(" |       |    ")
@@ -202,5 +203,5 @@ def desenha_forca(erros):
     print()
 
 
-if (__name__ == "__main__"):
+if __name__ == "__main__":
     jogar()

@@ -1,6 +1,4 @@
-
 def jogar():
-
     print("*********************************")
     print("***Bem vindo ao jogo da Forca!***")
     print("*********************************")
@@ -32,30 +30,31 @@ def jogar():
 
     print(letras_acertadas)
 
-    while(not enforcado and not acertou):
+    while not enforcado and not acertou:
 
         chute = input("Qual letra?")
         chute = chute.strip().upper()
 
-        if(chute in palavra_secreta):
+        if chute in palavra_secreta:
             index = 0
             for letra in palavra_secreta:
-                if(chute == letra):
+                if chute == letra:
                     letras_acertadas[index] = letra
                 index += 1
         else:
             erros += 1
-            print("Errou! Faltam {} tentativas".format(6-erros))
+            print("Errou! Faltam {} tentativas".format(6 - erros))
 
         enforcado = erros == 6
         acertou = "_" not in letras_acertadas
         print(letras_acertadas)
 
-    if(acertou):
+    if acertou:
         print("Você ganhou! :D")
     else:
         print("Perdeu! D:")
     print("Fim do jogo")
 
-if (__name__ == "__main__"):
+
+if __name__ == "__main__":
     jogar()
