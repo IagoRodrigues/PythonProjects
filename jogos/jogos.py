@@ -1,5 +1,5 @@
-import forca
-import advinhacao_final
+from . import forca
+from . import advinhacao_final
 
 
 def escolhe_jogo():
