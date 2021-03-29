@@ -21,7 +21,7 @@ class Conta:
         return valor_a_sacar <= valor_disponivel_a_sacar
 
     def saca(self, valor):
-        if(self.__pode_sacar(valor)):
+        if self.__pode_sacar(valor):
             self.__saldo -= valor
         else:
             print("O valor {} passou o limite".format(valor))

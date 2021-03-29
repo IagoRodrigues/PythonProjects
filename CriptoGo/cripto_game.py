@@ -110,11 +110,15 @@ def menu(chave):
     opt = 0
 
     while not sair:
+        print('\n')
+        print('------------------------------')
         print('---------- CriptaGo ----------')
+        print('------------------------------')
         print('------ 1-Criptografar --------')
         print('------ 2-Descriptografar -----')
         print('---------- 3-Matriz ----------')
-        print('--------   4-Sair ------------')
+        print('-----------  4-Sair ----------')
+        print('------------------------------')
 
         try:
             opt = int(input())
@@ -154,21 +158,21 @@ def criptografar(chave):
     # Para cada letra da msg
     for letra in letras_msg:
         achou = False
-        x = 0
+        m = 0
         # Vou procurando qual sua posicao no alfabeto (linha 0 da matriz)
         while not achou:
-            if letra == chave[0][x]:
+            if letra == chave[0][m]:
                 # Quando achar salvo sua posicao
                 # sorteio um valor de 1 a 3 correspondedo a quantidade de
                 # linhas com simbulos
                 # adiciono o simbulo sorteado na lista critografada
-                coluna = x
+                coluna = m
                 linha = random.randrange(1, linhas_criptografia)
                 cripto_msg.append(chave[linha][coluna])
                 achou = True
 
             # Se nao achei busco o proximo elemento
-            x += 1
+            m += 1
 
             # Se a letra encontrada for um espaco
             # adiciono o espaco na posicao
@@ -187,7 +191,54 @@ def descriptografar(chave):
         chave recebida
     """
     msg = input('Insira sua mensagem: ')
-    msg.strip().upper()
+
+    # Crio uma lista vazia que conterá cada char da msg
+    char_msg = []
+
+    # Coloco os chars da msg na lista
+    char_msg[:0] = msg
+
+    # Crio a lista para receber as letras apos a descriptografia
+    descripto_msg = []
+
+    # Para cada letra da mensagem
+    for char in char_msg:
+        achou = False
+
+        # Ignoro a linha 0 da chave, visto que e o alfabeto
+        linha = 1
+
+        # Comeco da coluna 0 para frente
+        coluna = 0
+
+        # Enquanto nao achou
+        while not achou:
+
+            # Se a coluna for 26, tenho que ir para a linha de baixo
+            # e recomeçar a contagem coluna por coluna
+            if coluna == quant_letras_alfbto:
+                linha += 1
+                coluna = 0
+
+            # Se o char que procuro for igual o char da chave
+            if char == chave[linha][coluna]:
+                # acrescento o elemento que pertence a mesma coluna do char, mas da linha 0
+                # que e a letra do alfabeto que corresponde ao caractere selecionado
+                descripto_msg.append(chave[0][coluna])
+                achou = True
+
+            # Se a letra encontrada for um espaco
+            # adiciono o espaco na posicao
+            if char == ' ':
+                descripto_msg.append(' ')
+                achou = True
+
+            # Senão busco no proximo elemento
+            coluna += 1
+
+    # Escrevo a msg criptografada
+    print('Mensagem descriptografada:')
+    print(''.join(descripto_msg))
 
 
 # Inicia o app-----------------------------------

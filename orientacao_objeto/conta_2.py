@@ -1,7 +1,7 @@
 
 class Conta:
 
-    def __init__(self, numero, titular, saldo, limite = 1000.0):
+    def __init__(self, numero, titular, saldo, limite=1000.0):
         """
             Quando usamos essa notação o python nos avisa que esse atributo
             não deve ser acessado diretamente, ele não proibe, mas avisa
