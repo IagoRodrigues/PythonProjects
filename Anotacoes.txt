@@ -687,3 +687,50 @@ class FolhaDePagamento:
 
 Note que, no caso acima, não precisamos passar nenhum primeiro argumento fixo para o método estático. Nesse caso, não é
 possível acessar as informações da classe, porém o método estático é acessível a partir da classe e também da instância.
+
+Classes abstratas ou ABC------------------------------------------------------------------------------------------------
+
+O Python possui classes abstratas ou ABC = Abstract Base Classes. Na pratica podemos tanto criar nossas ABC quanto pegar
+uma pronta, a partir do python mesmo. Classes abstratas são contratos: quem é filho é obrigado a cumprir o contrato.
+Para pegar pronta:
+
+from collections.abc import classe_para_importar
+
+por exemplo, importamos a classe:
+
+>>>from collections.abc import MutableSequence
+
+para usar essa classe como contrato, dizemos que nossa classe é filha dela:
+
+>>>class Playlist(MutableSequence):
+>>>    pass
+
+o python não dará erro, ele só mostrará algo quando instanciarmos (tentarmos usar de fato):
+
+>>>filmes = Playlist()
+
+Retorna:
+
+TypeError: Can't instantiate abstract class Playlist with abstract methods __delitem__, __getitem__,
+__len__, __setitem__, insert
+
+Avisando que faltou colocar esses métodos para "cumprir o contrato" como deveria
+
+Para criar a nossa:
+>>>from abc import ABCMeta, abstractmethod
+
+>>>class Programa(metaclass = ABCMeta):
+>>>    @abstractmethod
+>>>    def __str__(self):
+>>>        pass
+
+Pronto! isso garante que quem for filho da classe Programa obrigatoriamente tem que implementar o método __str__.
+Inclusive é possível dar um corpo para esse método na classe pai, sendo assim o filho é obrigado a implementar ou
+usar a classe do pai
+
+Exemplo usando a classe do pai:
+
+>>>def __str__(self):
+>>>    super().__str__()
+
+agora cumprimos o contrato (a classe filha tem o método str) e usamos a implementação padrão da classe pai

@@ -53,6 +53,7 @@ class Serie(Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
+
 '''
     Estou com a ideia de transformar tudo em uma playlist de likes, com filmes e series.
 '''
@@ -60,8 +61,40 @@ vingadores = Filme('vingadores - guerra infinita', 2018, 160)
 vingadores.dar_like()
 vingadores.dar_like()
 vingadores.dar_like()
-print(f'{vingadores.nome} - {vingadores.ano} - {vingadores.duracao}: {vingadores.likes}')
+# print(f'{vingadores.nome} - {vingadores.ano} - {vingadores.duracao}: {vingadores.likes}')
 
 atlanta = Serie('atlanta', 2018, 2)
 atlanta.dar_like()
-print(f'{atlanta.nome} - {atlanta.ano} - {atlanta.temporadas}: {atlanta.likes}')
+# print(f'{atlanta.nome} - {atlanta.ano} - {atlanta.temporadas}: {atlanta.likes}')
+
+'''
+    O filme e um programa
+    A serie e um programa
+
+    logo, posso fazer uma lista de programa que contem filmes e series. O python nao e apegado a tipos,
+    entao e mais facil de colocar objetos diferentes em uma lista, mas a preocupacao com os tipos deve ser
+    mantido, para nao termos erros
+'''
+# Crio a lista com meus programas
+meus_programas = [vingadores, atlanta]
+
+# Escrevo nome duracao e quantidade de likes
+# for programa in meus_programas:
+#    print(f'{programa.nome}, - {programa.temporadas}: {programa.likes}')
+
+'''
+    O Codigo a cima gera um erro, afinal quando o objeto for atlanta programa.temporadas vai retornar a quantidade
+    de temporadas. Mas quando o objeto for vingadores não vai existir programa.temporadas, porque vingadores e
+    um filme, ele tem duracao e nao temporadas.
+    
+    Vou fazer um novo if usando a funcao hasattr que recebe um obj, o nome de um atributo e confere se esse obj tem
+    ou nao esse atributo
+    
+    tambem usarei um if ternario:
+'''
+
+for programa in meus_programas:
+    # Duracao = programa.duracao se o objeto tiver duracao, senao ele recebe programa.temporadas
+    descricao = programa.duracao if hasattr(programa, 'duracao') else programa.temporadas
+
+    print(f'{programa.nome}, duracao de {descricao} e tem {programa.likes} likes')
